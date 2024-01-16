@@ -261,10 +261,10 @@ body {
 .container {
 	max-width: 1200px;
 	width: 100%;
-	margin: 0 auto;
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
 	gap: 1.5rem;
+  margin-left: 5%;
 }
 .hoverbox {
   text-align: justify;
