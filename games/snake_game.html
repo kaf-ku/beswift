@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title> BESwift </title>
+    <link rel="stylesheet" href="snake_game-styles.css">
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <script src="snake_game-script.js" defer></script>
+   </head>
+<body>
+  <div class="sidebar">
+    <div class="logo-details">
+        <!-- LOGO LOGO LOGO -->
+        
+        <i class='bx bx-joystick-button'></i> 
+        <div class="logo_name">BESwift</div>
+        <i class='bx bx-menu' id="btn" ></i>
+    </div>
+    <ul class="nav-list">
+      <li>
+        <a href="../index.html">
+          <i class='bx bx-grid-alt'></i>
+          <span class="links_name">To-Do List</span>
+        </a>
+         <span class="tooltip">To-Do List</span>
+      </li>
+      <li>
+        <a href="../profile/profile.html">
+          <i class='bx bxs-user-account'></i>
+          <span class="links_name">Profile</span>
+        </a>
+        <span class="tooltip">Profile</span>
+      </li>
+      <li>
+       <a href="../avatar/avatar.html">
+         <i class='bx bx-user' ></i>
+         <span class="links_name">Avatar</span>
+       </a>
+       <span class="tooltip">Avatar</span>
+     </li>
+     <li>
+       <a href="games.html">
+        <i class='bx bxs-joystick'></i>
+         <span class="links_name">Games</span>
+       </a>
+       <span class="tooltip">Games</span>
+     </li>
+     <li class="profile">
+      <div class="profile-details">
+         <button class="profile-btn">
+           <i class='bx bx-user-circle'></i>
+         </button> 
+       <box-icon name='user-circle'></box-icon>
+        <div class="name_section">
+          <div class="name">Maria Santos</div>
+          <div class="section">12 - Jordan</div>
+        </div>
+      </div>
+      <i class='bx bx-log-out' id="log_out" ></i>
+  </li>
+    </ul>
+  </div>
+  <section class="container">
+
+    <!-- MAINMAIN -->
+    <span class="background"><b>SNAKE GAME</b></span>
+    <div class="wrapper">
+      <div class="game-details">
+        <span class="score">Score: 0</span>
+        <span class="high-score">High Score: 0</span>
+      </div>
+      <div class="play-board"></div>
+      <div class="controls">
+        <i data-key="ArrowLeft" class="fa-solid fa-arrow-left-long"></i>
+        <i data-key="ArrowUp" class="fa-solid fa-arrow-up-long"></i>
+        <i data-key="ArrowRight" class="fa-solid fa-arrow-right-long"></i>
+        <i data-key="ArrowDown" class="fa-solid fa-arrow-down-long"></i>
+      </div>
+    </div>
+
+</section>
+
+<script>
+let sidebar = document.querySelector(".sidebar");
+let closeBtn = document.querySelector("#btn");
+let searchBtn = document.querySelector(".bx-search");
+
+closeBtn.addEventListener("click", ()=>{
+  sidebar.classList.toggle("open");
+  menuBtnChange();
+});
+
+searchBtn.addEventListener("click", ()=>{ 
+  sidebar.classList.toggle("open");
+  menuBtnChange(); 
+});
+
+// code changing sidebar button(optional)
+function menuBtnChange() {
+ if(sidebar.classList.contains("open")){
+   closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+ }else {
+   closeBtn.classList.replace("bx-menu-alt-right","bx-menu");
+ }
+}
+</script>
+</body>
+</html>

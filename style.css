@@ -1,0 +1,538 @@
+/* Google Font Link */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins" , sans-serif;
+}
+.sidebar{
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 78px;
+  background: #4F709C;
+  padding: 6px 14px;
+  z-index: 99;
+  transition: all 0.5s ease;
+}
+.sidebar.open{
+  width: 250px;
+}
+.sidebar .logo-details{
+  height: 60px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.sidebar .logo-details .icon{
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+.sidebar .logo-details .logo_name{
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+.sidebar.open .logo-details .icon,
+.sidebar.open .logo-details .logo_name{
+  opacity: 1;
+}
+.sidebar .logo-details #btn{
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  font-size: 22px;
+  transition: all 0.4s ease;
+  font-size: 23px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+.sidebar.open .logo-details #btn{
+  text-align: right;
+}
+.sidebar i{
+  color: #fff;
+  height: 60px;
+  min-width: 50px;
+  font-size: 28px;
+  text-align: center;
+  line-height: 60px;
+}
+.sidebar .nav-list{
+  margin-top: 20px;
+  height: 100%;
+}
+.sidebar li{
+  position: relative;
+  margin: 8px 0;
+  list-style: none;
+}
+.sidebar li .tooltip{
+  position: absolute;
+  top: -20px;
+  left: calc(100% + 15px);
+  z-index: 3;
+  background: #fff;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 15px;
+  font-weight: 400;
+  opacity: 0;
+  white-space: nowrap;
+  pointer-events: none;
+  transition: 0s;
+}
+.sidebar li:hover .tooltip{
+  opacity: 1;
+  pointer-events: auto;
+  transition: all 0.4s ease;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.sidebar.open li .tooltip{
+  display: none;
+}
+.sidebar input{
+  font-size: 15px;
+  color: #FFF;
+  font-weight: 400;
+  outline: none;
+  height: 50px;
+  width: 100%;
+  width: 50px;
+  border: none;
+  border-radius: 12px;
+  transition: all 0.5s ease;
+  background: #2f311b;
+}
+.sidebar.open input{
+  padding: 0 20px 0 50px;
+  width: 100%;
+}
+
+.sidebar li a{
+  display: flex;
+  height: 100%;
+  width: 100%;
+  border-radius: 12px;
+  align-items: center;
+  text-decoration: none;
+  transition: all 0.4s ease;
+  background: #30507a;
+}
+.sidebar li a:hover{
+  background: #FFF;
+}
+.sidebar li a .links_name{
+  color: #fff;
+  font-size: 15px;
+  font-weight: 400;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.4s;
+}
+.sidebar.open li a .links_name{
+  opacity: 1;
+  pointer-events: auto;
+}
+.sidebar li a:hover .links_name,
+.sidebar li a:hover i{
+  transition: all 0.5s ease;
+  color: #31527e ;
+}
+.sidebar li i{
+  height: 50px;
+  line-height: 50px;
+  font-size: 18px;
+  border-radius: 12px;
+}
+.sidebar li.profile{
+  position: fixed;
+  height: 60px;
+  width: 78px;
+  left: 0;
+  bottom: -8px;
+  padding: 10px 14px;
+  background: #30507a;
+  transition: all 0.5s ease;
+  overflow: hidden;
+}
+.sidebar.open li.profile{
+  width: 250px;
+}
+.sidebar li .profile-details{
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+.sidebar li img{
+  height: 45px;
+  width: 45px;
+  object-fit: cover;
+  border-radius: 30px;
+  margin-right: 10px;
+}
+.sidebar li.profile .name,
+.sidebar li.profile .section{
+  font-size: 15px;
+  font-weight: 400;
+  color: #fff;
+  white-space: nowrap;
+}
+.sidebar li.profile .section{
+  font-size: 12px;
+}
+.sidebar .profile #log_out{
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  background: #30507a;
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  border-radius: 0px;
+  transition: all 0.5s ease;
+}
+.sidebar.open .profile #log_out{
+  width: 50px;
+  background: none;
+}
+
+.profile-btn {
+  background-color: #30507a;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  align-self: center;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+}
+
+.home-section{
+  position: relative;
+  background: #FAF8EF;
+  min-height: 100vh;
+  top: 0;
+  left: 78px;
+  width: calc(100% - 78px);
+  transition: all 0.5s ease;
+  z-index: 2;
+}
+.sidebar.open ~ .home-section{
+  left: 250px;
+  width: calc(100% - 250px);
+}
+.home-section .text{
+  display: flex;
+  flex-direction: column;
+  display: inline-block;
+  color: #2d4664;
+  font-size: 25px;
+  font-weight: 500;
+  margin: 18px
+}
+
+@media (max-width: 420px) {
+  .sidebar li .tooltip{
+    display: none;
+  }
+}
+
+body{
+    height: 100vh;
+    background: #f7cc8b;
+}   
+
+
+*,
+*:before,
+*:after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    height: 100vh;
+    background:#30507a;    
+}
+
+.todolist-creator {
+  margin: 1%;
+}
+
+.list-creator {
+  margin-bottom: 20px;
+  display: flex;
+  width: 100%;
+}
+
+#new-list-name {
+  height: 45px;
+  padding: 10px;
+  margin-right: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+#lists-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.todo-container { 
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  min-height: 500px;
+}
+
+.todo-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.todo-item {
+  width: 257px;
+  background: #eee;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+}
+
+.delete-btn {
+  background-color: rgb(189, 58, 58);
+  margin-left: 10px;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background-color: #5c78a7;
+}
+
+.list-title {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  font-size: 1.2em;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.list-title:focus {
+  outline: none;
+  border-bottom: 1px solid #666;
+}
+
+.add-btn {
+  width: 13% ;
+  padding: 7px 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #92b14a; 
+  color: white;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.add-btn:hover {
+  background-color: #5c78a7; /* Darker blue on hover */
+}
+
+/* Rest of the CSS code remains the same */
+/* ... */
+
+.addtask {
+  width: 65%;
+  padding: 10px;
+  margin-right: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 5%;
+}
+
+#create-list-btn {
+  height: 45px;
+  width: 170px;
+  padding: 7px 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #f3b64c; 
+  color: white;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.delete-list-btn {
+  width: 13%;
+  margin-left: 4%; 
+  padding: 7px 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: rgb(189, 58, 58); 
+  color: white;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* transition po for hover effect */
+}
+
+.delete-list-btn:hover {
+  background-color: #5c78a7;
+}
+
+.complete-btn {
+  background-color: #92b14a;
+  margin-left: 10px;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.complete-btn:hover {
+  background-color: #5c78a7;
+}
+
+/* Style for the sidebar container */
+.info-sidebar {
+  position: relative; 
+  left: 0;
+  top: 0;
+  padding-top: 10px;
+  justify-content: center;
+  width: 100%; /* Set the width of the sidebar */
+  height: 100%; /* Full-height sidebar */
+  background-color: #f3b64c; /* Sidebar background color */
+  text-decoration-color: white;}
+
+/* Style for the content inside the sidebar */
+.info-sidebar-content {
+  padding: 6px 16px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+/* Style for the rest of the content */
+.content {
+  margin-left: 200px; /* Same as the width of the sidebar */
+  padding: 1px 16px; /* Padding */
+  height: 1000px; /* Sample height for scrolling */
+}
+
+.current-level{
+ margin: 10px;
+}
+
+.current-xp{
+  margin: 10px;
+}
+
+.points-bar-container {
+  width: 200px;
+  background-color: #ddd;
+  border-radius: 7px;
+  margin: 10px;
+  margin-left: 3px;
+  bottom: 2px;
+}
+
+/* Style for the points bar */
+#points-bar {
+  height: 23px;
+  background-color: #92b14a;
+  width: 0%; /* Initial width */
+  border-radius: 7px;
+}
+
+.current-currency{
+  margin: 10px;
+}
+
+.modal {
+  display: none; /* Hidden by default */
+  position:fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 78px;
+  top: 0;
+  width: calc(100% - 78px);
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: none;
+  border-radius: 5px;
+  width: 60%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.info-sidebar{
+  padding: 10px 20px;
+}
+
+.info-sidebar,
+.info-sidebar > div{
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  gap: .5rem;
+}
+
+.xp-currency{
+  margin-left: auto;
+}
+
+.info-sidebar .money-container i{
+height: 50px;
+  line-height: 50px;
+  font-size: 18px;
+  border-radius: 12px;
+}

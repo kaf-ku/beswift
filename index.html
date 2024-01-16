@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title> BESwift </title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+     <!-- java -->
+     
+
+   </head>
+<body>
+  <div class="sidebar">
+    <div class="logo-details">
+        <!-- LOGO LOGO LOGO -->
+        
+        <i class='bx bx-joystick-button'></i> 
+        <div class="logo_name">BESwift</div>
+        <i class='bx bx-menu' id="btn" ></i>
+    </div>
+    <ul class="nav-list">
+      <li>
+        <a href="index.html">
+          <i class='bx bx-grid-alt'></i>
+          <span class="links_name">To-Do List</span>
+        </a>
+         <span class="tooltip">To-Do List</span>
+      </li>
+      <li>
+        <a href="profile/profile.html">
+          <i class='bx bxs-user-account'></i>
+          <span class="links_name">Profile</span>
+        </a>
+        <span class="tooltip">Profile</span>
+      </li>
+      <li>
+       <a href="avatar/avatar.html">
+         <i class='bx bx-user' ></i>
+         <span class="links_name">Avatar</span>
+       </a>
+       <span class="tooltip">Avatar</span>
+     </li>
+     <li>
+      <a href="games/games.html">
+       <i class='bx bxs-joystick'></i>
+        <span class="links_name">Games</span>
+      </a>
+      <span class="tooltip">Games</span>
+    </li>
+    <li>
+     <li class="profile">
+         <div class="profile-details">
+            <button class="profile-btn">
+              <i class='bx bx-user-circle'></i>
+            </button> 
+          <box-icon name='user-circle'></box-icon>
+           <div class="name_section">
+             <div class="name">Maria Santos</div>
+             <div class="section">12 - Jordan</div>
+           </div>
+         </div>
+         <i class='bx bx-log-out' id="log_out" ></i>
+     </li>
+    </ul>
+  </div>
+   
+  <section class="home-section">
+    <div class="info-sidebar">
+        <div class="money-container">
+        <div class = "current-currency" >Money <span id="currency">0</span></div>
+        <div class = "current-level">Level <span id="level">1</span></div>
+      </div>
+        <div class="xp-container">
+        <div class = "current-xp">XP <span id="points"></span></div>
+        <div class="points-bar-container">
+            <div id="points-bar"></div>
+          </div>
+        </div>
+    </div>
+    <div class="TDL-container">
+      <div class="text">To-Do List</div>
+
+      <div class="todolist-creator">
+        <div class="list-creator">
+          <input type="text" id="new-list-name" placeholder="Enter new list name...">
+          <button id="create-list-btn">Create New List</button>
+        </div>
+        <div id="lists-container"></div>
+      </div>
+    </div>
+    
+    <div id="congratsModal" class="modal">
+      <div class="modal-content">
+          <span class="close">&times;</span>
+          <p id="congratsMessage"></p>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+
+  </section>
+
+  <script>
+  let sidebar = document.querySelector(".sidebar");
+  let closeBtn = document.querySelector("#btn");
+  let searchBtn = document.querySelector(".bx-search");
+
+  closeBtn.addEventListener("click", ()=>{
+    sidebar.classList.toggle("open");
+    menuBtnChange();//calling the function(optional)
+  });
+
+  searchBtn.addEventListener("click", ()=>{ // Sidebar open when you click on the search iocn
+    sidebar.classList.toggle("open");
+    menuBtnChange(); //calling the function(optional)
+  });
+
+  // following are the code to change sidebar button(optional)
+  function menuBtnChange() {
+   if(sidebar.classList.contains("open")){
+     closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");//replacing the iocns class
+   }else {
+     closeBtn.classList.replace("bx-menu-alt-right","bx-menu");//replacing the iocns class
+   }
+  }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title> BESwift </title>
+    <link rel="stylesheet" href="games_style.css">
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body>
+  <div class="sidebar">
+    <div class="logo-details">
+        <!-- LOGO LOGO LOGO -->
+        
+        <i class='bx bx-joystick-button'></i> 
+        <div class="logo_name">BESwift</div>
+        <i class='bx bx-menu' id="btn" ></i>
+    </div>
+    <ul class="nav-list">
+      <li>
+        <a href="../index.html">
+          <i class='bx bx-grid-alt'></i>
+          <span class="links_name">To-Do List</span>
+        </a>
+         <span class="tooltip">To-Do List</span>
+      </li>
+      <li>
+        <a href="../profile/profile.html">
+          <i class='bx bxs-user-account'></i>
+          <span class="links_name">Profile</span>
+        </a>
+        <span class="tooltip">Profile</span>
+      </li>
+      <li>
+       <a href="../avatar/avatar.html">
+         <i class='bx bx-user' ></i>
+         <span class="links_name">Avatar</span>
+       </a>
+       <span class="tooltip">Avatar</span>
+     </li>
+     <li>
+       <a href="games.html">
+        <i class='bx bxs-joystick'></i>
+         <span class="links_name">Games</span>
+       </a>
+       <span class="tooltip">Games</span>
+     </li>
+     <li class="profile">
+      <div class="profile-details">
+         <button class="profile-btn">
+           <i class='bx bx-user-circle'></i>
+         </button> 
+       <box-icon name='user-circle'></box-icon>
+        <div class="name_section">
+          <div class="name">Maria Santos</div>
+          <div class="section">12 - Jordan</div>
+        </div>
+      </div>
+      <i class='bx bx-log-out' id="log_out" ></i>
+  </li>
+    </ul>
+  </div>
+  <section class="container">
+    <span class="background"><b>GAMES | BES</b></span>
+<!-- MAINOK -->
+	<div class="hoverbox">
+		<img class="hoverbox__image" src="https://images.unsplash.com/photo-1511447333015-45b65e60f6d5?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2Njk2OTQxOTc&ixlib=rb-4.0.3&q=80" alt="Test Img">
+		<h3>Tetris Game</h3>
+		<p>Timeless and classic, the tetris game engages in cognitive skills such as memory and pattern recognition. It promotes problem-solving, decision-making, etc. It’s a game that improves a web of thinking patterns all at once. </p>
+		<a href="tetris_game.html">Play</a>
+	</div>
+	<div class="hoverbox">
+		<img class="hoverbox__image" src="https://images.unsplash.com/photo-1579567761406-4684ee0c75b6?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2Njk2OTQxOTc&ixlib=rb-4.0.3&q=80" alt="Test Img">
+		<h3>Snake Game</h3>
+		<p>Snake is a game where the player maneuvers a growing line, the snake. Each time the snake eats a piece of food, its tail grows longer, making the game increasingly difficult. The user controls the direction of the snake's head.</p>
+		<a href="snake_game.html">Play</a>
+	</div>
+	<div class="hoverbox">
+		<img class="hoverbox__image" src="https://images.unsplash.com/photo-1462556791646-c201b8241a94?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2Njk2OTQyNTA&ixlib=rb-4.0.3&q=80" alt="Test Img">
+		<h3>Number Guessing Game</h3>
+		<p>A number guessing game is a simple guessing game where a user is supposed to guess a number between 0 and 100 within a number of attempts. This will improve cognitive enhancement, strategic planning, and etc. </p>
+		<a href="number_game.html">Play</a>
+	</div>
+</div>
+  </section>
+
+  <script>
+  let sidebar = document.querySelector(".sidebar");
+  let closeBtn = document.querySelector("#btn");
+  let searchBtn = document.querySelector(".bx-search");
+
+  closeBtn.addEventListener("click", ()=>{
+    sidebar.classList.toggle("open");
+    menuBtnChange();
+  });
+
+  searchBtn.addEventListener("click", ()=>{ 
+    sidebar.classList.toggle("open");
+    menuBtnChange(); 
+  });
+
+  // code changing sidebar button(optional)
+  function menuBtnChange() {
+   if(sidebar.classList.contains("open")){
+     closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+   }else {
+     closeBtn.classList.replace("bx-menu-alt-right","bx-menu");
+   }
+  }
+  </script>
+</body>
+</html>
