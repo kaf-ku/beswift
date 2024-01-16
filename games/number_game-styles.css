@@ -173,6 +173,20 @@
   align-items: center;
   flex-wrap: nowrap;
 }
+.profile-btn {
+  background-color: #30507a;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  align-self: center;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+}
 .sidebar li img{
   height: 45px;
   width: 45px;
@@ -388,7 +402,6 @@ body {
   align-items: center;
   justify-content: center;
   background: #E3F2FD;
-  overflow-y: hidden; 
 }
 .wrapper {
   padding: 30px 40px;
@@ -451,18 +464,4 @@ input::-webkit-outer-spin-button {
   z-index: -1;
   opacity: 0.2;
   color: rgb(106, 91, 192);
-}
-.profile-btn {
-  background-color: #30507a;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  align-self: center;
-  height: 40px;
-  width: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 10px;
 }
