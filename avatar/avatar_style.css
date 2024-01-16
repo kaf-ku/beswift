@@ -267,6 +267,7 @@ body {
     margin:0;
     background-color:#FAF8EF;
     overflow-y: hidden;
+    overflow-x: hidden;
 }
 
 #avatar {
