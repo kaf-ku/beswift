@@ -252,7 +252,7 @@ body {
 	align-items: center;
     min-height: 100vh;
     background: #E3F2FD;
-  overflow-y: hidden;
+    overflow-y: hidden;
   }
   
 * {
@@ -265,7 +265,7 @@ body {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
 	gap: 1.5rem;
-  margin-left: 5%;
+    margin-left: 10%;
 }
 .hoverbox {
   text-align: justify;
