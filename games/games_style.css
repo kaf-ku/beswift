@@ -252,6 +252,7 @@ body {
 	align-items: center;
     min-height: 100vh;
     background: #E3F2FD;
+  overflow-y: hidden;
   }
   
 * {
