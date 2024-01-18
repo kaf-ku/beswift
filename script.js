@@ -1,99 +1,155 @@
 
+var bigSelect = new Audio('audio/bigSelect.mp3');
+var bigDeSelect = new Audio('audio/bigDeSelect.mp3');
+var getNewSpecialitem = new Audio('audio/getNewSpecialitem.mp3');
+var note = new Audio('audio/note.mp3');
+var Pick_Coin15 = new Audio('audio/Pick_Coin15.mp3');
+var pickupCoin = new Audio('audio/pickupCoin.mp3');
 // --------------------------------------- TO DO LIST CODE ---------------------------------------
 
-// list name and button 
+// JavaScript code
+document.addEventListener('DOMContentLoaded', function() {
+    loadFromLocalStorage();
+});
+
+let lists = [];
+
+function saveToLocalStorage() {
+    localStorage.setItem('lists', JSON.stringify(lists));
+}
+
+function loadFromLocalStorage() {
+    const storedLists = localStorage.getItem('lists');
+    if (storedLists) {
+        lists = JSON.parse(storedLists);
+        renderLists();
+    }
+}
+
 document.getElementById('create-list-btn').addEventListener('click', function() {
     let listName = document.getElementById('new-list-name').value;
     if (listName) {
+        bigSelect.play();
         createNewList(listName);
         document.getElementById('new-list-name').value = '';
     }
 });
 
-//create list function ( created div - input - list title edit - create list - delete list )
 function createNewList(name) {
-    let listsContainer = document.getElementById('lists-container');
-
-    // add to do list container
-    let todoContainer = document.createElement('div');
-    todoContainer.classList.add('todo-container');
-
-    // input list name 
-    let listTitleInput = document.createElement('input');
-    listTitleInput.type = 'text';
-    listTitleInput.value = name;
-    listTitleInput.classList.add('list-title');
-    todoContainer.appendChild(listTitleInput);
-
-    // input task name
-    let todoInput = document.createElement('input');
-    todoInput.type = 'text';
-	todoInput.classList.add('addtask');
-    todoInput.placeholder = 'Add a new task...';
-    todoContainer.appendChild(todoInput);
-   
-    // create list button
-	let addTodoBtn = document.createElement('button');
-    addTodoBtn.textContent = '✓';
-	addTodoBtn.classList.add('add-btn');
-    addTodoBtn.onclick = function() {
-        if (todoInput.value) {
-            addTodoItem(todoInput.value, todoContainer);
-            todoInput.value = '';
-        }
+    let newList = {
+        name: name,
+        tasks: []
     };
-
-    //delete name button
-    let deleteListBtn = document.createElement('button');
-    deleteListBtn.textContent = 'X';
-	deleteListBtn.classList.add('delete-list-btn');
-    deleteListBtn.onclick = function() {
-        if (confirm('Are you sure you want to delete this list?')) {
-        listsContainer.removeChild(todoContainer);
-        }
-    };
-
-    //terms
-    todoContainer.appendChild(todoInput);
-    todoContainer.appendChild(addTodoBtn);
-    todoContainer.appendChild(deleteListBtn);
-    listsContainer.appendChild(todoContainer);
+    lists.push(newList);
+    saveToLocalStorage();
+    renderLists();
 }
 
-// create task function ( create task btn - delete task btn )
-function addTodoItem(text, todoList) {
-    
-    // create task element
-    let item = document.createElement('li');
-    item.textContent = text;
+function renderLists() {
+    const listsContainer = document.getElementById('lists-container');
+    listsContainer.innerHTML = '';
+
+    lists.forEach((list, listIndex) => {
+        let todoContainer = document.createElement('div');
+        todoContainer.classList.add('todo-container');
+
+        let listTitleInput = document.createElement('input');
+        listTitleInput.type = 'text';
+        listTitleInput.value = list.name;
+        listTitleInput.classList.add('list-title');
+        todoContainer.appendChild(listTitleInput);
+
+        let todoInput = document.createElement('input');
+        todoInput.type = 'text';
+        todoInput.classList.add('addtask');
+        todoInput.placeholder = 'Add a new task...';
+        todoContainer.appendChild(todoInput);
+
+        let addTodoBtn = document.createElement('button');
+        addTodoBtn.textContent = '✓';
+        addTodoBtn.classList.add('add-btn');
+        addTodoBtn.onclick = function() {
+            if (todoInput.value) {
+                bigSelect.play();
+                addTodoItem(todoInput.value, listIndex);
+                todoInput.value = '';
+            }
+        };
+        todoContainer.appendChild(addTodoBtn);
+
+        let deleteListBtn = document.createElement('button');
+        deleteListBtn.textContent = 'X';
+        deleteListBtn.classList.add('delete-list-btn');
+        deleteListBtn.onclick = function() {
+            if (confirm('Are you sure you want to delete this list?')) {
+                bigDeSelect.play();
+                lists.splice(listIndex, 1);
+                saveToLocalStorage();
+                renderLists();
+            }
+        };
+        todoContainer.appendChild(deleteListBtn);
+
+        // Append existing tasks
+        list.tasks.forEach(task => {
+            let item = createTodoItem(task, listIndex);
+            todoContainer.appendChild(item);
+        });
+
+        listsContainer.appendChild(todoContainer);
+    });
+}
+
+    function createTodoItem(taskText, listIndex) {
+        let item = document.createElement('li');
+        item.textContent
+    = taskText;
     item.classList.add('todo-item');
 
-    // complete task button
+
+    // Complete task button
     let completeBtn = document.createElement('button');
     completeBtn.textContent = '✓';
     completeBtn.classList.add('complete-btn');
-    completeBtn.onclick = function() {
-        earnPoints();
+    completeBtn.onclick = function() {{
+        getNewSpecialitem.play();
+        lists[listIndex].tasks = lists[listIndex].tasks.filter(task => task !== taskText);
+        saveToLocalStorage();
+        renderLists();
+        // earn currency and points function
         earnCurrency();
+        earnPoints();
+        // congrats model
         showCongrats();
-        todoList.removeChild(item);
-        
+    }
     };
 
-    // delete task button
+    // Delete task button
     let deleteBtn = document.createElement('button');
     deleteBtn.textContent = 'Delete';
     deleteBtn.classList.add('delete-btn');
     deleteBtn.onclick = function() {
-         if (confirm('Are you sure you want to delete this task?')) {
-            todoList.removeChild(item);
+        if (confirm('Are you sure you want to delete this task?')) {
+            bigDeSelect.play();
+            lists[listIndex].tasks = lists[listIndex].tasks.filter(task => task !== taskText);
+            saveToLocalStorage();
+            renderLists();
         }
     };
 
     item.appendChild(completeBtn);
     item.appendChild(deleteBtn);
-    todoList.appendChild(item);
+
+    return item;
+    }
+
+function addTodoItem(text, listIndex) {
+lists[listIndex].tasks.push(text);
+saveToLocalStorage();
+renderLists();
 }
+        
+    
 
 // --------------------------------------- LEVEL, XP, CURRENCY ---------------------------------------
 
@@ -119,6 +175,7 @@ function earnPoints() {
 function levelUp() {
     level++;
     xp -= xpForNextLevel; // Reset XP to 0 or carry over excess XP
+    note.play();
     updateLocalStorage();
     updateDisplay();
 }
