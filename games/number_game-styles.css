@@ -465,3 +465,6 @@ input::-webkit-outer-spin-button {
   opacity: 0.2;
   color: rgb(106, 91, 192);
 }
+::placeholder{
+  opacity: 0.7;
+}
